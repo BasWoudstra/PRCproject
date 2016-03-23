@@ -37,7 +37,6 @@ namespace UnitTestProject1
 
         }
         
-
         //cat
         [TestMethod]
         public void Test_CatNumber()
@@ -45,7 +44,7 @@ namespace UnitTestProject1
             MakeCat();
             //assert
             int expectedNumber = 123;
-            int accualNumber = TestCat.Chipnumber();
+            int accualNumber = Testcat.ChipRegistrationNumber;
             Assert.AreEqual(expectedNumber, accualNumber);
         }
         [TestMethod]
@@ -53,8 +52,8 @@ namespace UnitTestProject1
         {
             MakeCat();
             //assert
-            DateTime thisDate = TestCat.DateOfBirht();
-            DateTime wantedDate = new DateTime(2, 5, 2015);
+            string thisDate = Convert.ToString(Testcat.DateOfBirth);
+            string wantedDate = Convert.ToString(new SimpleDate(2, 5, 2015));
             Assert.AreEqual(wantedDate, thisDate);
         }
         [TestMethod]
@@ -63,7 +62,7 @@ namespace UnitTestProject1
             MakeCat();
             //assert
             string expectedname = "thiscat";
-            string accualname = TestCat.name();
+            string accualname = Testcat.Name;
             Assert.AreEqual(expectedname, accualname);
         }
         [TestMethod]
@@ -72,7 +71,7 @@ namespace UnitTestProject1
             MakeCat();
             //assert
             string expectedHabit = "kan de kattebak niet vinden";
-            string accualHabit = TestCat.BadHabit;
+            string accualHabit = Testcat.BadHabits;
             Assert.AreEqual(expectedHabit, accualHabit);
         }
         [TestMethod]
@@ -81,8 +80,8 @@ namespace UnitTestProject1
             MakeCat();
 
             //assert 
-            string expectednoise = "miauw";
-            string accualnoise = TestCat.makenoise();
+            string expectednoise = "Miauw";
+            string accualnoise = Testcat.makeNoise();
             Assert.AreEqual(expectednoise, accualnoise);
         }
         //dog
@@ -92,7 +91,7 @@ namespace UnitTestProject1
             MakeDog();
             //assert
             int expectedresult = 123;
-            int accualresult = Testdog.Chipnumber;
+            int accualresult = Testdog.ChipRegistrationNumber;
             Assert.AreEqual(expectedresult, accualresult);
         }
         [TestMethod]
@@ -100,8 +99,8 @@ namespace UnitTestProject1
         {
             MakeDog();
             //assert
-            DateTime expectedDate = new DateTime(2, 5, 2015);
-            DateTime accualDate = Testdog.DateOfBirth;
+            string expectedDate =Convert.ToString( new SimpleDate(2, 5, 2015));
+            string accualDate = Convert.ToString( Testdog.DateOfBirth);
             Assert.AreEqual(expectedDate, accualDate);
         }
         [TestMethod]
@@ -118,17 +117,17 @@ namespace UnitTestProject1
         {
             MakeDog();
             //assert
-            SimpleDate expectedDate = new SimpleDate(2, 6, 2015);
-            SimpleDate accualDate = Testdog.DateOfWalk;
+            string expectedDate =Convert.ToString( new SimpleDate(2, 6, 2015));
+            string accualDate =Convert.ToString( Testdog.LastWalkDate );
             Assert.AreEqual(expectedDate, accualDate);
         }
         [TestMethod]
-        public void Test_MakeNoise()
+        public void Test_DogMakeNoise()
         {
             MakeDog();
             //assert 
-            string expectednoise = "miauw";
-            string accualnoise = Testdog.makenoise();
+            string expectednoise = "Woof";
+            string accualnoise = Testdog.makeNoise();
             Assert.AreEqual(expectednoise, accualnoise);
         }
     }
