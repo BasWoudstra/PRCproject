@@ -7,5 +7,8 @@ namespace AnimalShelter
 {
     interface ISellable
     {
+        decimal Price { get; set; }
+
+        public abstract void CalcPrice();
     }
 }

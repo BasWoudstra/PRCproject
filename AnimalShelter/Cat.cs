@@ -13,6 +13,8 @@ namespace AnimalShelter
         /// </summary>
         public string BadHabits { get; set; }
 
+        public decimal Price { get; set; }
+
         /// <summary>
         /// Creates a cat.
         /// </summary>
@@ -27,6 +29,18 @@ namespace AnimalShelter
         {
             
             this.BadHabits = badHabits;// TODO: Modify the constructor. Make sure it initializes all properties of the class.
+            CalcPrice();
+        }
+
+        public override void CalcPrice(){
+
+            int howlong = BadHabits.Length;
+
+                Price = 60 - howlong;
+                if (Price < 20)
+                {
+                    Price = 20;
+                }
         }
 
         public override string makeNoise()
@@ -50,7 +64,7 @@ namespace AnimalShelter
         {
             // TODO: Put your own code here to make the method return the string specified in the
             // method description.
-            return "Cat: " + ChipRegistrationNumber + ", " + DateOfBirth + ", " + Name + ", " + IsReserved + ", " + BadHabits;
+            return "Cat: " + ChipRegistrationNumber + ", " + DateOfBirth + ", " + Name + "test" + ", " + IsReserved + ", " + BadHabits;
         }
     }
 }

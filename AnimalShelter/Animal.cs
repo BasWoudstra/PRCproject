@@ -8,7 +8,7 @@ namespace AnimalShelter
     /// <summary>
     /// Class representing an animal in the shelter.
     /// </summary>
-    public abstract class Animal
+    public abstract class Animal : ISellable
     {
         /// <summary>
         /// The chipnumber of the animal. Must be unique. Must be zero or greater than zero.
@@ -30,6 +30,8 @@ namespace AnimalShelter
         /// </summary>
         public bool IsReserved { get; set; }
 
+        public decimal Price { get; set; }
+
         /// <summary>
         /// Creates an animal.
         /// </summary>
@@ -44,6 +46,8 @@ namespace AnimalShelter
             this.Name = name;
             this.IsReserved = false;
         }
+
+        public override void CalcPrice();
 
         public abstract string makeNoise();
 
@@ -72,7 +76,7 @@ namespace AnimalShelter
 
             string info = ChipRegistrationNumber
                           + ", " + DateOfBirth
-                          + ", " + Name
+                          + ", " + Name 
                           + ", " + IsReservedString;
             return info;
         }

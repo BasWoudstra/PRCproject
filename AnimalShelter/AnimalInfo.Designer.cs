@@ -43,6 +43,7 @@
             this.btSave = new System.Windows.Forms.Button();
             this.dtPicker = new System.Windows.Forms.DateTimePicker();
             this.ckBoxReservering = new System.Windows.Forms.CheckBox();
+            this.lbPrice = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -180,11 +181,21 @@
             this.ckBoxReservering.TabIndex = 19;
             this.ckBoxReservering.UseVisualStyleBackColor = true;
             // 
+            // lbPrice
+            // 
+            this.lbPrice.AutoSize = true;
+            this.lbPrice.Location = new System.Drawing.Point(12, 186);
+            this.lbPrice.Name = "lbPrice";
+            this.lbPrice.Size = new System.Drawing.Size(35, 13);
+            this.lbPrice.TabIndex = 20;
+            this.lbPrice.Text = "label4";
+            // 
             // AnimalInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(352, 261);
+            this.Controls.Add(this.lbPrice);
             this.Controls.Add(this.ckBoxReservering);
             this.Controls.Add(this.dtPicker);
             this.Controls.Add(this.btSave);
@@ -224,5 +235,6 @@
         private System.Windows.Forms.Button btSave;
         private System.Windows.Forms.DateTimePicker dtPicker;
         private System.Windows.Forms.CheckBox ckBoxReservering;
+        private System.Windows.Forms.Label lbPrice;
     }
 }

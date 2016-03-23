@@ -57,6 +57,8 @@ namespace AnimalShelter
                 lbUitgelaten.Text = "Laatst uitgelaten: ";
                 
             }
+
+            lbPrice.Text = "€"+Convert.ToString(animal.Price);
         }
 
         private void btClose_Click(object sender, EventArgs e)
