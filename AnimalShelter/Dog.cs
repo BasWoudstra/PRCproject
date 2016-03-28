@@ -12,7 +12,6 @@ namespace AnimalShelter
         /// </summary>
         public SimpleDate LastWalkDate { get; set; }
 
-        public decimal Price{get;set;}
 
         /// <summary>
         /// Creates a dog.

@@ -13,7 +13,6 @@ namespace AnimalShelter
         /// </summary>
         public string BadHabits { get; set; }
 
-        public decimal Price { get; set; }
 
         /// <summary>
         /// Creates a cat.

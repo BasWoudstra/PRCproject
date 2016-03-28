@@ -9,12 +9,15 @@ using System.Windows.Forms;
 
 namespace AnimalShelter
 {
-    public partial class AdministrationForm : Form
+    public partial class AdministrationForm : Form, IComparable
     {
         /// <summary>
         /// The (only) animal in this administration (for now....)
         /// </summary>
         public static Administration administration;
+
+        List<Animal> sortedAnimals = new List<Animal>();
+
         /// <summary>
         /// Creates the form for doing adminstrative tasks
         /// </summary>
@@ -70,33 +73,68 @@ namespace AnimalShelter
             int day;
             int month;
             int year;
+            int minDate = DateTimePicker.MinimumDateTime.Year;
+            int maxDate = DateTimePicker.MaximumDateTime.Year;
             bool checkD = Int32.TryParse(tbDOBD.Text, out day);
             bool checkM = Int32.TryParse(tbDOBM.Text, out month);
-            bool checkY = Int32.TryParse(tbDOBY.Text, out year); 
-            if (checkD == true && checkM == true && checkY == true)
+            bool checkY = Int32.TryParse(tbDOBY.Text, out year);
+            bool yearRight;
+            if (year > minDate && year < maxDate)
+            {
+                yearRight = true;
+            }
+            else
+            {
+                yearRight = false;
+            }
+            if (checkD == true && checkM == true && checkY == true && yearRight == true)
             {
                 dateOfBirth = new SimpleDate(day, month, year);
             }
             else
             {
-               MessageBox.Show("Please fill in all values");
-               return;
+                if (yearRight == false)
+                {
+                    MessageBox.Show("The date must be between the year " + minDate +" and "+ maxDate);
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Please fill in all values");
+                    return;
+                }
             }
 
             SimpleDate lastWalkDate = null;
             if (animalTypeComboBox.Text == "Dog" || animalTypeComboBox.Text == "dog")
             {
                 checkD = Int32.TryParse(tbLWD.Text, out day);
-                checkD = Int32.TryParse(tbLWM.Text, out month);
-                checkD = Int32.TryParse(tbLWY.Text, out year);
-                if (checkD && checkM == true && checkY == true)
+                checkM = Int32.TryParse(tbLWM.Text, out month);
+                checkY = Int32.TryParse(tbLWY.Text, out year);
+                if (year > minDate && year < maxDate)
+                {
+                    yearRight = true;
+                }
+                else
+                {
+                    yearRight = false;
+                }
+                if (checkD && checkM == true && checkY == true && yearRight == true)
                 {
                     lastWalkDate = new SimpleDate(day, month, year);
                 }
                 else
                 {
-                    MessageBox.Show("Please fill in all values");
-                    return;
+                    if (yearRight == false)
+                    {
+                        MessageBox.Show("The date must be between the year " + minDate + " and " + maxDate);
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please fill in all values");
+                        return;
+                    }
                 }
             }
 
@@ -203,12 +241,27 @@ namespace AnimalShelter
             }
         }
 
+        public void orderListBoxes()
+        {
+            sortedAnimals.Clear();
+            //Ascending
+            List<Animal> SortedList = administration.animals.OrderBy(o => o.ChipRegistrationNumber).ToList();
+            //Descending
+            //List<Animal> SortedList = administration.animals.OrderByDescending(o => o.ChipRegistrationNumber).ToList();
+
+            foreach (Animal diertje in SortedList)
+            {
+                sortedAnimals.Add(diertje);
+            }
+        }
+
         public void refreshListBoxes()
         {
+            orderListBoxes();
             string[] values = new string[5];
             lbNotReserved.Items.Clear();
             lbReserved.Items.Clear();
-            foreach (Animal animal in administration.animals)
+            foreach (Animal animal in sortedAnimals)
             {
                 string diertje = animal.ToString();
                 values = diertje.Split(',');
@@ -225,9 +278,16 @@ namespace AnimalShelter
 
         private void btMakeNoise_Click(object sender, EventArgs e)
         {
-            Animal diertje = administration.findAnimal(Convert.ToInt32(tbChipNumber.Text));
-            string geluid = diertje.makeNoise();
-            MessageBox.Show(geluid);
+            bool checkIfEmpty = String.IsNullOrWhiteSpace(tbChipNumber.Text);
+            if (checkIfEmpty == false)
+            {
+                Animal diertje = administration.findAnimal(Convert.ToInt32(tbChipNumber.Text));
+                if (diertje != null)
+                {
+                    string geluid = diertje.makeNoise();
+                    MessageBox.Show(geluid);
+                }
+            }
         }
 
     }

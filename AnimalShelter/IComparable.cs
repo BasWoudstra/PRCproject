@@ -5,10 +5,8 @@ using System.Text;
 
 namespace AnimalShelter
 {
-    public interface ISellable
+    interface IComparable
     {
-        decimal Price { get; set; }
-
-        void CalcPrice();
+        void orderListBoxes();
     }
 }

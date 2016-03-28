@@ -47,7 +47,7 @@ namespace AnimalShelter
             this.IsReserved = false;
         }
 
-        public override void CalcPrice();
+        public abstract void CalcPrice();
 
         public abstract string makeNoise();
 

@@ -97,13 +97,14 @@ namespace AnimalShelter
             string badhabits;
             SimpleDate uitlaten;
 
+            //Cats
             for (int x = 0; x < 3; x++)
             {
                 naam = namenKat[random.Next(namenKat.Length)];
                 chipnummer = random.Next(1,9999);
                 day = random.Next(1,28);
                 month = random.Next(1,12);
-                year = random.Next(1994, DateTime.Now.Year);
+                year = random.Next(1990, DateTime.Now.Year);
                 geboortedatum = new SimpleDate(day,month,year);
                 badhabits = badHabits[random.Next(badHabits.Length)];
 
@@ -119,13 +120,14 @@ namespace AnimalShelter
                 }
                 Add(animal);
             }
+            //Dogs
             for (int x = 0; x < 3; x++)
             {
                 naam = namenHond[random.Next(namenHond.Length)];
                 chipnummer = random.Next(1, 9999);
                 day = random.Next(1, 28);
                 month = random.Next(1, 12);
-                year = random.Next(1994, DateTime.Now.Year);
+                year = random.Next(1990, DateTime.Now.Year);
                 geboortedatum = new SimpleDate(day, month, year);
                 day = random.Next(geboortedatum.Day, 28);
                 month = random.Next(geboortedatum.Month, 12);
