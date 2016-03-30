@@ -30,7 +30,11 @@ namespace AnimalShelter
         /// </summary>
         public bool IsReserved { get; set; }
 
-        public decimal Price { get; set; }
+        //public decimal Price { get; set; }
+        public abstract decimal Price
+        {
+            get;
+        }
 
         /// <summary>
         /// Creates an animal.
@@ -47,7 +51,7 @@ namespace AnimalShelter
             this.IsReserved = false;
         }
 
-        public abstract void CalcPrice();
+      //  public abstract void CalcPrice();
 
         public abstract string makeNoise();
 

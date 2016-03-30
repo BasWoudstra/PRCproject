@@ -12,6 +12,22 @@ namespace AnimalShelter
         /// </summary>
         public SimpleDate LastWalkDate { get; set; }
 
+        public override decimal Price
+        {
+            get
+            {
+                int price = 0;
+                if (ChipRegistrationNumber < 50000)
+                {
+                    price = 200;
+                }
+                else
+                {
+                    price = 350;
+                }
+                return price;
+            }
+        }
 
         /// <summary>
         /// Creates a dog.
@@ -25,7 +41,7 @@ namespace AnimalShelter
                    string name, SimpleDate lastWalkDate) : base(chipRegistrationNumber,dateOfBirth,name)
         {
             this.LastWalkDate = lastWalkDate;// TODO: Modify the constructor. Make sure it initializes all properties of the class.
-            CalcPrice();
+            
         }
 
         public override string makeNoise()
@@ -33,17 +49,7 @@ namespace AnimalShelter
             return "Woof";
         }
 
-        public override void CalcPrice()
-        {
-            if (ChipRegistrationNumber < 50000)
-            {
-                this.Price = 200;
-            }
-            else
-            {
-                this.Price = 350;
-            }
-        }
+        
 
         /// <summary>
         /// Retrieve information about this dog

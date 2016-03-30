@@ -13,6 +13,21 @@ namespace AnimalShelter
         /// </summary>
         public string BadHabits { get; set; }
 
+        public override decimal Price
+        {
+            get
+            {
+                int price;
+                int howlong = BadHabits.Length;
+
+                price = 60 - howlong;
+                if (price < 20)
+                {
+                    price = 20;
+                }
+                return price;
+            }
+        }
 
         /// <summary>
         /// Creates a cat.
@@ -28,18 +43,7 @@ namespace AnimalShelter
         {
             
             this.BadHabits = badHabits;// TODO: Modify the constructor. Make sure it initializes all properties of the class.
-            CalcPrice();
-        }
-
-        public override void CalcPrice(){
-
-            int howlong = BadHabits.Length;
-
-                Price = 60 - howlong;
-                if (Price < 20)
-                {
-                    Price = 20;
-                }
+            
         }
 
         public override string makeNoise()
