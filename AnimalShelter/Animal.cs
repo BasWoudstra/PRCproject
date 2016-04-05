@@ -53,7 +53,7 @@ namespace AnimalShelter
 
       //  public abstract void CalcPrice();
 
-        public abstract string makeNoise();
+        public abstract string MakeNoise();
 
         /// <summary>
         /// Retrieve information about this animal
@@ -71,11 +71,11 @@ namespace AnimalShelter
             string IsReservedString;
             if (IsReserved)
             {
-                IsReservedString = "reserved";
+                IsReservedString = "True";
             }
             else
             {
-                IsReservedString = "not reserved";
+                IsReservedString = "False";
             }
 
             string info = ChipRegistrationNumber

@@ -46,7 +46,7 @@ namespace AnimalShelter
             
         }
 
-        public override string makeNoise()
+        public override string MakeNoise()
         {
             return "Miauw";
         }
@@ -66,8 +66,8 @@ namespace AnimalShelter
         public override string ToString()
         {
             // TODO: Put your own code here to make the method return the string specified in the
-            // method description.
-            return "Cat: " + ChipRegistrationNumber + ", " + DateOfBirth + ", " + Name + "test" + ", " + IsReserved + ", " + BadHabits;
+            // med description.
+            return "Cat: " + base.ToString() + ", " + BadHabits;
         }
     }
 }

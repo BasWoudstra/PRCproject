@@ -44,7 +44,7 @@ namespace AnimalShelter
             
         }
 
-        public override string makeNoise()
+        public override string MakeNoise()
         {
             return "Woof";
         }
@@ -69,7 +69,7 @@ namespace AnimalShelter
         {
             // TODO: Put your own code here to make the method return the string specified in the
             // method description.
-            return "Dog: " + ChipRegistrationNumber + ", " + DateOfBirth + ", " + Name + ", " + IsReserved + ", " + LastWalkDate;
+            return "Dog: " + base.ToString() + ", " + LastWalkDate;
         }
     }
 }

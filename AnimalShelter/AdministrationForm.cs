@@ -284,7 +284,7 @@ namespace AnimalShelter
                 Animal diertje = administration.findAnimal(Convert.ToInt32(tbChipNumber.Text));
                 if (diertje != null)
                 {
-                    string geluid = diertje.makeNoise();
+                    string geluid = diertje.MakeNoise();
                     MessageBox.Show(geluid);
                 }
             }
