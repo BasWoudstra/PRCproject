@@ -328,7 +328,7 @@ namespace UnitTestProject1
             TestAdministration.Add(Testcat);
             //assert
             Animal expectedAnimal = Testcat;
-            Animal accualAnimal = TestAdministration.findAnimal(123);
+            Animal accualAnimal = TestAdministration.FindAnimal(123);
             Assert.AreEqual(expectedAnimal, accualAnimal);
         }
         [TestMethod]
@@ -338,7 +338,7 @@ namespace UnitTestProject1
             TestAdministration.Add(Testcat);
             //assert
             Animal expectedAnimal = null;
-            Animal accualAnimal = TestAdministration.findAnimal(456);
+            Animal accualAnimal = TestAdministration.FindAnimal(456);
             Assert.AreEqual(expectedAnimal, accualAnimal);
         }
         [TestMethod]
@@ -348,7 +348,7 @@ namespace UnitTestProject1
             TestAdministration.Add(Testcat);
             //assert
             bool expectedresult = true;
-            bool accualResult = TestAdministration.alreadyInSystem(123);
+            bool accualResult = TestAdministration.AlreadyInSystem(123);
             Assert.AreEqual(expectedresult, accualResult);
         }
         [TestMethod]
@@ -358,7 +358,7 @@ namespace UnitTestProject1
             TestAdministration.Add(Testcat);
             //assert
             bool expectedresult = false;
-            bool accualResult = TestAdministration.alreadyInSystem(456);
+            bool accualResult = TestAdministration.AlreadyInSystem(456);
             Assert.AreEqual(expectedresult, accualResult);
         }
     }

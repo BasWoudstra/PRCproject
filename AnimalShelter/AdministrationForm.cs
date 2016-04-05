@@ -61,7 +61,7 @@ namespace AnimalShelter
             }
             else
             {
-                bool inSystem = administration.alreadyInSystem(chipRegistrationNumber);
+                bool inSystem = administration.AlreadyInSystem(chipRegistrationNumber);
                 if (inSystem)
                 {
                     MessageBox.Show("Chipnumber " + chipRegistrationNumber + " is already present in the system.");
@@ -168,7 +168,7 @@ namespace AnimalShelter
             bool correct = Int32.TryParse(tbChipNumber.Text, out chipNumber);
             if (correct)
             {
-                animal = administration.findAnimal(chipNumber);
+                animal = administration.FindAnimal(chipNumber);
                 if (animal != null)
                 {
                     AnimalInfo animalinfo = new AnimalInfo(animal, this);
@@ -223,7 +223,7 @@ namespace AnimalShelter
             bool removed = false;
             bool correct = Int32.TryParse(tbChipNumber.Text, out chipnumber);
             if (correct){
-                animal = administration.findAnimal(chipnumber);
+                animal = administration.FindAnimal(chipnumber);
                 if (animal != null)
                 {
                     animalName = animal.Name;
@@ -281,7 +281,7 @@ namespace AnimalShelter
             bool checkIfEmpty = String.IsNullOrWhiteSpace(tbChipNumber.Text);
             if (checkIfEmpty == false)
             {
-                Animal diertje = administration.findAnimal(Convert.ToInt32(tbChipNumber.Text));
+                Animal diertje = administration.FindAnimal(Convert.ToInt32(tbChipNumber.Text));
                 if (diertje != null)
                 {
                     string geluid = diertje.MakeNoise();
