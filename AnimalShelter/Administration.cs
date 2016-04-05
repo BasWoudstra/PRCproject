@@ -8,44 +8,35 @@ namespace AnimalShelter
     public class Administration
     {
         public List<Animal> animals = new List<Animal>();
-
-        public Administration()
+        
+        public void Add(Animal animal)
         {
-        }
-
-        public bool Add(Animal animal)
-        {
-            bool added = false;
-            animals.Add(animal);
-
-            foreach(Animal diertje in animals){
-                if (diertje.ToString() == animal.ToString())
-                {
-                    added = true;
-                }
-            }
-            return added;
-        }
-
-        public bool RemoveAnimal(int chipRegistrationNumber)
-        {
-            bool removed = false;
-            int x = 0;
             
-            foreach (Animal diertje in animals)
+            if (AlreadyInSystem(animal.ChipRegistrationNumber))
             {
-                if (diertje.ChipRegistrationNumber == chipRegistrationNumber)
-                {
-                    animals.RemoveAt(x);
-                    removed = true;
-                    return removed;
-                }
-                x++;
+                throw new DuplicateWaitObjectException();
             }
-            return removed;
+            else
+            {
+                animals.Add(animal);
+            }
         }
 
-        public Animal findAnimal(int chipRegistrationNumber)
+        public void RemoveAnimal(int chipRegistrationNumber)
+        {
+            Animal deleteAnimal = FindAnimal(chipRegistrationNumber);
+            
+            if (deleteAnimal == null)
+            {
+                throw new ArgumentNullException();
+            }
+            else
+            {
+                animals.Remove(deleteAnimal);
+            }
+        }
+
+        public Animal FindAnimal(int chipRegistrationNumber)
         {
             Animal animal = null;
             foreach (Animal diertje in animals)
@@ -59,18 +50,16 @@ namespace AnimalShelter
             return animal;
         }
 
-        public bool alreadyInSystem(int chipRegistrationNumber)
+        public bool AlreadyInSystem(int chipRegistrationNumber)
         {
-            bool inSystem = false;
-
-            foreach (Animal animal in animals)
+            if(FindAnimal(chipRegistrationNumber) == null)
             {
-                if (animal.ChipRegistrationNumber == chipRegistrationNumber)
-                {
-                    inSystem = true;
-                }
+                return false;
             }
-            return inSystem;
+            else
+            {
+                return true;
+            }
         }
 
         public void Change(Animal animal)

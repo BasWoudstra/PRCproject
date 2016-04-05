@@ -27,7 +27,7 @@ namespace AnimalShelter
             animalTypeComboBox.SelectedIndex = 0;
             insertIntoCBCat();
             administration = new Administration();
-            administration.makeRandomAnimals();
+            MakeRandomAnimals();
             refreshListBoxes();
         }
 
@@ -291,7 +291,7 @@ namespace AnimalShelter
         }
 
 
-        public void makeRandomAnimals()
+        public void MakeRandomAnimals()
         {
             string[] namenHond = { "Bello", "Toby", "Kevin", "Laika" };
             string[] namenKat = { "Poes", "Thor", "KittyCat" };
