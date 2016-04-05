@@ -40,8 +40,14 @@ namespace AnimalShelter
         public Dog(int chipRegistrationNumber, SimpleDate dateOfBirth,
                    string name, SimpleDate lastWalkDate) : base(chipRegistrationNumber,dateOfBirth,name)
         {
-            this.LastWalkDate = lastWalkDate;// TODO: Modify the constructor. Make sure it initializes all properties of the class.
-            
+            try
+            {
+                this.LastWalkDate = lastWalkDate;// TODO: Modify the constructor. Make sure it initializes all properties of the class.
+            }
+            catch
+            {
+                throw new ArgumentNullException("Lastwalkdate is leeg");
+            }
         }
 
         public override string MakeNoise()

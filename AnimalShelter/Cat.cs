@@ -41,9 +41,14 @@ namespace AnimalShelter
         public Cat(int chipRegistrationNumber, SimpleDate dateOfBirth,
                    string name, string badHabits) : base(chipRegistrationNumber,dateOfBirth,name)
         {
-            
-            this.BadHabits = badHabits;// TODO: Modify the constructor. Make sure it initializes all properties of the class.
-            
+            try
+            {
+                this.BadHabits = badHabits;// TODO: Modify the constructor. Make sure it initializes all properties of the class.
+            }
+            catch
+            {
+                throw new ArgumentNullException("Bad habits is leeg");
+            }
         }
 
         public override string MakeNoise()

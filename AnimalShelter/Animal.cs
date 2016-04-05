@@ -30,7 +30,6 @@ namespace AnimalShelter
         /// </summary>
         public bool IsReserved { get; set; }
 
-        //public decimal Price { get; set; }
         public abstract decimal Price
         {
             get;
@@ -45,13 +44,18 @@ namespace AnimalShelter
         /// <param name="name">The name of the animal.</param>
         public Animal(int chipRegistrationNumber, SimpleDate dateOfBirth, string name)
         {
-            this.ChipRegistrationNumber = chipRegistrationNumber;
-            this.DateOfBirth = dateOfBirth;
-            this.Name = name;
-            this.IsReserved = false;
+            try
+            {
+                this.ChipRegistrationNumber = chipRegistrationNumber;
+                this.DateOfBirth = dateOfBirth;
+                this.Name = name;
+                this.IsReserved = false;
+            }
+            catch
+            {
+                throw new ArgumentNullException("Animal");
+            }
         }
-
-      //  public abstract void CalcPrice();
 
         public abstract string MakeNoise();
 
