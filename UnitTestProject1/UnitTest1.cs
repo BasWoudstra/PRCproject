@@ -143,7 +143,7 @@ namespace UnitTestProject1
 
             //assert 
             string expectednoise = "Miauw";
-            string accualnoise = Testcat.makeNoise();
+            string accualnoise = Testcat.MakeNoise();
             Assert.AreEqual(expectednoise, accualnoise);
         }
         [TestMethod]
@@ -245,7 +245,7 @@ namespace UnitTestProject1
             MakeDog();
             //assert 
             string expectednoise = "Woof";
-            string accualnoise = Testdog.makeNoise();
+            string accualnoise = Testdog.MakeNoise();
             Assert.AreEqual(expectednoise, accualnoise);
         }
         [TestMethod]
@@ -279,9 +279,10 @@ namespace UnitTestProject1
             string catbadHabits = "kan de kattebak niet vinden";
             //act
             Animal newtestcat = new Cat(catchipNumber, catDateOfBirth, catname, catbadHabits);
+            TestAdministration.Add(newtestcat);
             //assert
-            bool expectedresult = true;
-            bool accualresult = TestAdministration.Add(newtestcat);
+            Animal expectedresult = newtestcat;
+            Animal accualresult = TestAdministration.FindAnimal(newtestcat.ChipRegistrationNumber);
             Assert.AreEqual(expectedresult, accualresult);
         }
         [TestMethod]
@@ -294,10 +295,11 @@ namespace UnitTestProject1
             SimpleDate dogDateOfWalk = new SimpleDate(2, 6, 2015);
             //act
             Animal newtestdog = new Dog(dogchipNumber, dogDateOfBirth, dogname, dogDateOfWalk);
+            TestAdministration.Add(newtestdog);
             //assert
-            bool expectedResult = true;
-            bool accualresult = TestAdministration.Add(newtestdog);
-            Assert.AreEqual(expectedResult, accualresult);
+            Animal expectedresult = newtestdog;
+            Animal accualresult = TestAdministration.FindAnimal(newtestdog.ChipRegistrationNumber);
+            Assert.AreEqual(expectedresult, accualresult);
         }
         [TestMethod]
         public void Test_AdministrationDelTrue()
@@ -305,9 +307,10 @@ namespace UnitTestProject1
             //act
             MakeCat();
             TestAdministration.Add(Testcat);
+            TestAdministration.RemoveAnimal(123);
             //assert
-            bool expectedResult = true;
-            bool accualResult = TestAdministration.RemoveAnimal(123);
+            Animal expectedResult = null;
+            Animal accualResult = TestAdministration.FindAnimal(123);
             Assert.AreEqual(expectedResult, accualResult);
         }
         [TestMethod]
@@ -316,9 +319,10 @@ namespace UnitTestProject1
             //act
             MakeCat();
             TestAdministration.Add(Testcat);
+            TestAdministration.RemoveAnimal(123);
             //assert
-            bool expectedResult = false;
-            bool accualResult = TestAdministration.RemoveAnimal(587);
+            Animal expectedResult = null;
+            Animal accualResult = TestAdministration.FindAnimal(123);
             Assert.AreEqual(expectedResult, accualResult);
         }
         [TestMethod]
@@ -347,8 +351,8 @@ namespace UnitTestProject1
             MakeCat();
             TestAdministration.Add(Testcat);
             //assert
-            bool expectedresult = true;
-            bool accualResult = TestAdministration.AlreadyInSystem(123);
+            Animal expectedresult = Testcat;
+            Animal accualResult = TestAdministration.FindAnimal(123);
             Assert.AreEqual(expectedresult, accualResult);
         }
         [TestMethod]
@@ -357,8 +361,8 @@ namespace UnitTestProject1
             MakeCat();
             TestAdministration.Add(Testcat);
             //assert
-            bool expectedresult = false;
-            bool accualResult = TestAdministration.AlreadyInSystem(456);
+            Animal expectedresult = null;
+            Animal accualResult = TestAdministration.FindAnimal(456);
             Assert.AreEqual(expectedresult, accualResult);
         }
     }

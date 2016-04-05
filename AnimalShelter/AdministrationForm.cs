@@ -61,8 +61,7 @@ namespace AnimalShelter
             }
             else
             {
-                bool inSystem = administration.AlreadyInSystem(chipRegistrationNumber);
-                if (inSystem)
+                if (administration.FindAnimal(chipRegistrationNumber) != null)
                 {
                     MessageBox.Show("Chipnumber " + chipRegistrationNumber + " is already present in the system.");
                     return;
@@ -218,26 +217,24 @@ namespace AnimalShelter
         private void btRemove_Click(object sender, EventArgs e)
         {
             int chipnumber;
-            string animalName = "";
-            Animal animal;
-            bool removed = false;
-            bool correct = Int32.TryParse(tbChipNumber.Text, out chipnumber);
-            if (correct){
-                animal = administration.FindAnimal(chipnumber);
-                if (animal != null)
-                {
-                    animalName = animal.Name;
-                }
-                removed = administration.RemoveAnimal(chipnumber);
-            }
-            if (removed)
+            bool correct = Int32.TryParse(tbChipNumber.Text,  out chipnumber);
+
+            if (correct)
             {
-                MessageBox.Show(animalName + " was succesfully removed.");
-                refreshListBoxes();
+                string name = administration.FindAnimal(chipnumber).Name;
+                try
+                {
+                    administration.RemoveAnimal(chipnumber);
+                    MessageBox.Show(name + " was succesfully removed.");
+                }
+                catch(ArgumentNullException)
+                {
+                    MessageBox.Show("No animals have the chipnumber: " + chipnumber);
+                }
             }
             else
             {
-                MessageBox.Show("No animals have the chipnumber: " + chipnumber);
+                MessageBox.Show("please enter a chipnumber");
             }
         }
 
@@ -289,8 +286,7 @@ namespace AnimalShelter
                 }
             }
         }
-
-
+        
         public void MakeRandomAnimals()
         {
             string[] namenHond = { "Bello", "Toby", "Kevin", "Laika" };

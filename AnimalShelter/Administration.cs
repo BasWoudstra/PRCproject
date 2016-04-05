@@ -12,9 +12,9 @@ namespace AnimalShelter
         public void Add(Animal animal)
         {
             
-            if (AlreadyInSystem(animal.ChipRegistrationNumber))
+            if (FindAnimal(animal.ChipRegistrationNumber) != null)
             {
-                throw new DuplicateWaitObjectException();
+                 new DuplicateWaitObjectException();
             }
             else
             {
@@ -48,18 +48,6 @@ namespace AnimalShelter
                 }
             }
             return animal;
-        }
-
-        public bool AlreadyInSystem(int chipRegistrationNumber)
-        {
-            if(FindAnimal(chipRegistrationNumber) == null)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
         }
 
         public void Change(Animal animal)
