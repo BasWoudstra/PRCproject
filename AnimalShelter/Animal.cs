@@ -53,7 +53,7 @@ namespace AnimalShelter
             }
             catch
             {
-                throw new ArgumentNullException("Animal");
+                throw new ArgumentNullException("Please fill in all fields");
             }
         }
 
