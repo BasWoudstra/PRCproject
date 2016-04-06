@@ -44,17 +44,19 @@ namespace AnimalShelter
         /// <param name="name">The name of the animal.</param>
         public Animal(int chipRegistrationNumber, SimpleDate dateOfBirth, string name)
         {
-            try
+            if (chipRegistrationNumber == null || dateOfBirth == null || name == null)
+            {
+                throw new ArgumentNullException("Please fill in all fields");
+            }
+            else
             {
                 this.ChipRegistrationNumber = chipRegistrationNumber;
                 this.DateOfBirth = dateOfBirth;
                 this.Name = name;
                 this.IsReserved = false;
             }
-            catch
-            {
-                throw new ArgumentNullException("Please fill in all fields");
-            }
+            
+            
         }
 
         public abstract string MakeNoise();
