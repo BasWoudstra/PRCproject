@@ -12,6 +12,7 @@ namespace AnimalShelter
     /// the .Net DateTime object. SimpleDate hides the more complex interface of DateTime
     /// and makes it easy to  work with dates only.
     /// </summary>
+    [Serializable]
     public class SimpleDate
     {
         private DateTime date;
