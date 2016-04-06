@@ -8,6 +8,7 @@ namespace AnimalShelter
     /// <summary>
     /// Class representing an animal in the shelter.
     /// </summary>
+    [Serializable]
     public abstract class Animal : ISellable
     {
         /// <summary>

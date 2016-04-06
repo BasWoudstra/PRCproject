@@ -357,5 +357,16 @@ namespace AnimalShelter
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            administration.Save("AppSettings.dat");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            administration.Load("AppSettings.dat");
+            refreshListBoxes();
+        }
+
     }
 }

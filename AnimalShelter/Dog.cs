@@ -5,6 +5,7 @@ using System.Text;
 
 namespace AnimalShelter
 {
+    [Serializable]
     public class Dog : Animal
     {
         /// <summary>
