@@ -50,8 +50,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btMakeNoise = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btSaveSerial = new System.Windows.Forms.Button();
+            this.btLoad = new System.Windows.Forms.Button();
+            this.btSaveTxt = new System.Windows.Forms.Button();
+            this.btLoadTxt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // animalTypeComboBox
@@ -244,33 +246,55 @@
             this.btMakeNoise.UseVisualStyleBackColor = true;
             this.btMakeNoise.Click += new System.EventHandler(this.btMakeNoise_Click);
             // 
-            // button1
+            // btSaveSerial
             // 
-            this.button1.Location = new System.Drawing.Point(405, 48);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btSaveSerial.Location = new System.Drawing.Point(395, 53);
+            this.btSaveSerial.Name = "btSaveSerial";
+            this.btSaveSerial.Size = new System.Drawing.Size(75, 23);
+            this.btSaveSerial.TabIndex = 23;
+            this.btSaveSerial.Text = "Save Serial";
+            this.btSaveSerial.UseVisualStyleBackColor = true;
+            this.btSaveSerial.Click += new System.EventHandler(this.btSaveSerial_Click);
             // 
-            // button2
+            // btLoad
             // 
-            this.button2.Location = new System.Drawing.Point(405, 77);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 24;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btLoad.Location = new System.Drawing.Point(395, 84);
+            this.btLoad.Name = "btLoad";
+            this.btLoad.Size = new System.Drawing.Size(75, 23);
+            this.btLoad.TabIndex = 24;
+            this.btLoad.Text = "Load Serial";
+            this.btLoad.UseVisualStyleBackColor = true;
+            this.btLoad.Click += new System.EventHandler(this.btLoadSerial_Click);
+            // 
+            // btSaveTxt
+            // 
+            this.btSaveTxt.Location = new System.Drawing.Point(488, 53);
+            this.btSaveTxt.Name = "btSaveTxt";
+            this.btSaveTxt.Size = new System.Drawing.Size(75, 23);
+            this.btSaveTxt.TabIndex = 25;
+            this.btSaveTxt.Text = "Save Txt";
+            this.btSaveTxt.UseVisualStyleBackColor = true;
+            this.btSaveTxt.Click += new System.EventHandler(this.btSaveTxt_Click);
+            // 
+            // btLoadTxt
+            // 
+            this.btLoadTxt.Location = new System.Drawing.Point(488, 84);
+            this.btLoadTxt.Name = "btLoadTxt";
+            this.btLoadTxt.Size = new System.Drawing.Size(75, 23);
+            this.btLoadTxt.TabIndex = 26;
+            this.btLoadTxt.Text = "Load Txt";
+            this.btLoadTxt.UseVisualStyleBackColor = true;
+            this.btLoadTxt.Click += new System.EventHandler(this.button1_Click);
             // 
             // AdministrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(598, 327);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btLoadTxt);
+            this.Controls.Add(this.btSaveTxt);
+            this.Controls.Add(this.btLoad);
+            this.Controls.Add(this.btSaveSerial);
             this.Controls.Add(this.btMakeNoise);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -324,8 +348,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btMakeNoise;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btSaveSerial;
+        private System.Windows.Forms.Button btLoad;
+        private System.Windows.Forms.Button btSaveTxt;
+        private System.Windows.Forms.Button btLoadTxt;
 
     }
 }

@@ -356,16 +356,21 @@ namespace AnimalShelter
                 administration.Add(animal);
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        
+        private void btSaveTxt_Click(object sender, EventArgs e)
         {
-            administration.Save("AppSettings.dat");
+            administration.Export("AppSettings.dat");
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btLoad_Click(object sender, EventArgs e)
         {
             administration.Load("AppSettings.dat");
             refreshListBoxes();
+        }
+
+        private void btSaveSerial_Click(object sender, EventArgs e)
+        {
+            administration.Save("AppSettings.dat");
         }
 
     }
