@@ -54,6 +54,7 @@
             this.btLoad = new System.Windows.Forms.Button();
             this.btSaveTxt = new System.Windows.Forms.Button();
             this.btLoadTxt = new System.Windows.Forms.Button();
+            this.tbLocaton = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // animalTypeComboBox
@@ -284,13 +285,21 @@
             this.btLoadTxt.TabIndex = 26;
             this.btLoadTxt.Text = "Load Txt";
             this.btLoadTxt.UseVisualStyleBackColor = true;
-            this.btLoadTxt.Click += new System.EventHandler(this.button1_Click);
+            this.btLoadTxt.Click += new System.EventHandler(this.btLoadTxt_Click);
+            // 
+            // tbLocaton
+            // 
+            this.tbLocaton.Location = new System.Drawing.Point(432, 27);
+            this.tbLocaton.Name = "tbLocaton";
+            this.tbLocaton.Size = new System.Drawing.Size(100, 20);
+            this.tbLocaton.TabIndex = 27;
             // 
             // AdministrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(598, 327);
+            this.Controls.Add(this.tbLocaton);
             this.Controls.Add(this.btLoadTxt);
             this.Controls.Add(this.btSaveTxt);
             this.Controls.Add(this.btLoad);
@@ -352,6 +361,7 @@
         private System.Windows.Forms.Button btLoad;
         private System.Windows.Forms.Button btSaveTxt;
         private System.Windows.Forms.Button btLoadTxt;
+        private System.Windows.Forms.TextBox tbLocaton;
 
     }
 }
