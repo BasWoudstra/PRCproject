@@ -92,14 +92,22 @@ namespace AnimalShelter
         /// All animals currently in the administration are removed.
         /// </summary>
         /// <param name="fileName">The file to read from.</param>
-        public void Load(string fileName)
+        public void Load(string fileName, string fileType)
         {
-            animals.Clear();
+            switch(fileType){
+                case "dat":
+                animals.Clear();
 
-            using (FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
-            {
-                animals = formatter.Deserialize(stream) as List<Animal>;
+                using (FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+                {
+                    animals = formatter.Deserialize(stream) as List<Animal>;
+                }
+                    break;
+                case "txt":
+
+                    break;
             }
+        
         }
             /*
             string animalValues;
