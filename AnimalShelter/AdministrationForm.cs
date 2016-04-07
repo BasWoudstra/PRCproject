@@ -359,23 +359,24 @@ namespace AnimalShelter
         
         private void btSaveTxt_Click(object sender, EventArgs e)
         {
-            administration.Export(tbLocaton.Text);
+            administration.Export(tbLocaton.Text+".txt");
         }
 
         private void btSaveSerial_Click(object sender, EventArgs e)
         {
-            administration.Save(tbLocaton.Text);
+            administration.Save(tbLocaton.Text+".dat");
         }
 
         private void btLoadSerial_Click(object sender, EventArgs e)
         {
-            administration.Load(tbLocaton.Text, "dat");
+            administration.Load(tbLocaton.Text + ".dat", "dat");
             refreshListBoxes();
         }
 
         private void btLoadTxt_Click(object sender, EventArgs e)
         {
-            administration.Load(tbLocaton.Text, "txt");
+            administration.Load(tbLocaton.Text+".txt", "txt");
+            refreshListBoxes();
         }
 
     }

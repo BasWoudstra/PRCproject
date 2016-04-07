@@ -77,14 +77,6 @@ namespace AnimalShelter
             using(FileStream stream = new FileStream(fileName,FileMode.Create,FileAccess.Write)){
                formatter.Serialize(stream, animals);
             }
-            /*using (BinaryWriter writer = new BinaryWriter(File.Open(fileName, FileMode.Create)))
-            {
-                foreach (Animal animal in animals)
-                {
-                    writer.Write(animal.ToString());
-                    writer.Write("\r\n");
-                }
-            }*/
         }
 
         /// <summary>
@@ -94,6 +86,7 @@ namespace AnimalShelter
         /// <param name="fileName">The file to read from.</param>
         public void Load(string fileName, string fileType)
         {
+            if(File.Exists(fileName)){
             switch(fileType){
                 case "dat":
                 animals.Clear();
@@ -148,60 +141,9 @@ namespace AnimalShelter
                         }
                     }
                     break;
+                }
             }
-        
         }
-            /*
-            string animalValues;
-
-            string[] values = new string[5];
-            string[] date = new string[4];
-
-            if (File.Exists(fileName))
-            {
-                    using (BinaryReader reader = new BinaryReader(File.Open(fileName, FileMode.Open)))
-                    {
-                        animalValues = reader.ReadString();
-                        values = animalValues.Split(',');
-                        int chipRegistrationNumber = Convert.ToInt32(values[0].Substring(4));
-                        date = values[1].Split('-');
-                        int day = Convert.ToInt32(date[0]);
-                        int month = Convert.ToInt32(date[1]);
-                        int year = Convert.ToInt32(date[2]);
-                        SimpleDate dateOfBirth = new SimpleDate(day, month, year);
-                        string name = values[2].Substring(1);
-                        bool reserved;
-                        if (values[3] == "true")
-                        {
-                            reserved = true;
-                        }
-                        else
-                        {
-                            reserved = false;
-                        }
-
-                        if (values[0].Contains("Dog") || values[0].Contains("dog"))
-                        {
-                            date = values[4].Split('-');
-                            day = Convert.ToInt32(date[0]);
-                            month = Convert.ToInt32(date[1]);
-                            year = Convert.ToInt32(date[2]);
-                            SimpleDate lastWalkDate = new SimpleDate(day, month, year);
-                            Dog dog = new Dog(chipRegistrationNumber, dateOfBirth, name, lastWalkDate);
-                            dog.IsReserved = reserved;
-                            Add(dog);
-                        }
-                        else if (values[0].Contains("Cat") || values[0].Contains("cat"))
-                        {
-                            string badHabits = values[4];
-                            Cat cat = new Cat(chipRegistrationNumber, dateOfBirth, name, badHabits);
-                            cat.IsReserved = reserved;
-                            Add(cat);
-                        }
-                    }
-                
-            
-            }*/
             /// <summary>
 /// Exports the info of all animals to a text file with the given file name.
 /// 
