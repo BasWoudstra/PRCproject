@@ -383,7 +383,9 @@ namespace AnimalShelter
 
         private void btLoadTxt_Click(object sender, EventArgs e)
         {
-            try
+            AnimalFileImporterForm animalFileImporter = new AnimalFileImporterForm(administration, this);
+            animalFileImporter.Show();
+            /*try
             {
                 administration.Load(tbLocaton.Text + ".txt", "txt");
                 refreshListBoxes();
@@ -391,7 +393,7 @@ namespace AnimalShelter
             catch(FileNotFoundException)
             {
                 MessageBox.Show("No file with the name: " + tbLocaton.Text + ".txt " + "has been found");
-            }
+            }*/
        }
 
     }

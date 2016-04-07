@@ -45,7 +45,7 @@ namespace AnimalShelter
         /// <param name="name">The name of the animal.</param>
         public Animal(int chipRegistrationNumber, SimpleDate dateOfBirth, string name)
         {
-            if (chipRegistrationNumber == null || dateOfBirth == null || name == null)
+            if (chipRegistrationNumber == 0 || dateOfBirth == null || name == null)
             {
                 throw new ArgumentNullException("Please fill in all fields");
             }

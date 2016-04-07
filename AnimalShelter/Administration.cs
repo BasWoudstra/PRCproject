@@ -13,6 +13,7 @@ namespace AnimalShelter
     public class Administration
     {
         public List<Animal> animals;
+        public List<Animal> temporaryAnimals;
 
         IFormatter formatter = new BinaryFormatter();
 
@@ -99,6 +100,7 @@ namespace AnimalShelter
                         }
                         break;
                     case "txt":
+                        temporaryAnimals = new List<Animal>();
                         string[] values = new string[5];
                         string[] date = new string[4];
                         string[] animalsString = System.IO.File.ReadAllLines(fileName);
@@ -132,14 +134,14 @@ namespace AnimalShelter
                                 SimpleDate lastWalkDate = new SimpleDate(day, month, year);
                                 Dog dog = new Dog(chipRegistrationNumber, dateOfBirth, name, lastWalkDate);
                                 dog.IsReserved = reserved;
-                                Add(dog);
+                                temporaryAnimals.Add(dog);
                             }
                             else if (values[0].Contains("Cat") || values[0].Contains("cat"))
                             {
                                 string badHabits = values[4];
                                 Cat cat = new Cat(chipRegistrationNumber, dateOfBirth, name, badHabits);
                                 cat.IsReserved = reserved;
-                                Add(cat);
+                                temporaryAnimals.Add(cat);
                             }
                         }
                         break;

@@ -55,6 +55,7 @@
             this.btSaveTxt = new System.Windows.Forms.Button();
             this.btLoadTxt = new System.Windows.Forms.Button();
             this.tbLocaton = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // animalTypeComboBox
@@ -289,16 +290,26 @@
             // 
             // tbLocaton
             // 
-            this.tbLocaton.Location = new System.Drawing.Point(432, 27);
+            this.tbLocaton.Location = new System.Drawing.Point(395, 27);
             this.tbLocaton.Name = "tbLocaton";
-            this.tbLocaton.Size = new System.Drawing.Size(100, 20);
+            this.tbLocaton.Size = new System.Drawing.Size(168, 20);
             this.tbLocaton.TabIndex = 27;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(392, 12);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(55, 13);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "File name:";
             // 
             // AdministrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(598, 327);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.tbLocaton);
             this.Controls.Add(this.btLoadTxt);
             this.Controls.Add(this.btSaveTxt);
@@ -362,6 +373,7 @@
         private System.Windows.Forms.Button btSaveTxt;
         private System.Windows.Forms.Button btLoadTxt;
         private System.Windows.Forms.TextBox tbLocaton;
+        private System.Windows.Forms.Label label6;
 
     }
 }
