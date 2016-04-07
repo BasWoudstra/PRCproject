@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace AnimalShelter
 {
@@ -369,15 +370,29 @@ namespace AnimalShelter
 
         private void btLoadSerial_Click(object sender, EventArgs e)
         {
-            administration.Load(tbLocaton.Text + ".dat", "dat");
-            refreshListBoxes();
+            try
+            {
+                administration.Load(tbLocaton.Text + ".dat", "dat");
+                refreshListBoxes();
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("No file with the name: " + tbLocaton.Text + ".dat " + "has been found");
+            }
         }
 
         private void btLoadTxt_Click(object sender, EventArgs e)
         {
-            administration.Load(tbLocaton.Text+".txt", "txt");
-            refreshListBoxes();
-        }
+            try
+            {
+                administration.Load(tbLocaton.Text + ".txt", "txt");
+                refreshListBoxes();
+            }
+            catch(FileNotFoundException)
+            {
+                MessageBox.Show("No file with the name: " + tbLocaton.Text + ".txt " + "has been found");
+            }
+       }
 
     }
 }
