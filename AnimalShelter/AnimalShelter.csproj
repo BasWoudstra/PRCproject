@@ -67,7 +67,6 @@
       <DependentUpon>AnimalInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Cat.cs" />
-    <Compile Include="IComparable.cs" />
     <Compile Include="ISellable.cs" />
     <Compile Include="SimpleDate.cs" />
     <Compile Include="Dog.cs" />

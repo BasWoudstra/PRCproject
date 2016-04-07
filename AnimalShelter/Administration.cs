@@ -27,7 +27,11 @@ namespace AnimalShelter
             
             if (FindAnimal(animal.ChipRegistrationNumber) != null)
             {
-                 new DuplicateWaitObjectException();
+                new ArgumentException();
+            }
+            else if(animal == null)
+            {
+                new ArgumentNullException();
             }
             else
             {

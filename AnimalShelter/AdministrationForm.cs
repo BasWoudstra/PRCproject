@@ -10,12 +10,12 @@ using System.IO;
 
 namespace AnimalShelter
 {
-    public partial class AdministrationForm : Form, IComparable
+    public partial class AdministrationForm : Form 
     {
         /// <summary>
         /// The (only) animal in this administration (for now....)
         /// </summary>
-        public static Administration administration;
+        public Administration administration;
 
         List<Animal> sortedAnimals = new List<Animal>();
 
@@ -45,28 +45,20 @@ namespace AnimalShelter
             string name;
 
             bool NameNull = String.IsNullOrWhiteSpace(tbName.Text);
-            if (NameNull == false)
+            bool chipCorrect = Int32.TryParse(tbChipNumber.Text, out chipRegistrationNumber);
+            if (NameNull == false && chipCorrect)
             {
                 name = tbName.Text;
-            }
-            else
-            {
-                MessageBox.Show("Please fill in all values");
-                return;
-            }
-            bool chipCorrect = Int32.TryParse(tbChipNumber.Text, out chipRegistrationNumber);
-            if (chipCorrect == false)
-            {
-                MessageBox.Show("Please fill in all values");
-                return;
-            }
-            else
-            {
                 if (administration.FindAnimal(chipRegistrationNumber) != null)
                 {
                     MessageBox.Show("Chipnumber " + chipRegistrationNumber + " is already present in the system.");
                     return;
                 }
+            }
+            else
+            {
+                MessageBox.Show("Please fill in all values");
+                return;
             }
 
             SimpleDate dateOfBirth = null;
@@ -143,14 +135,33 @@ namespace AnimalShelter
                 {
                     case "Dog":
                     case "dog":
-                        Dog dog = new Dog(chipRegistrationNumber,dateOfBirth,name,lastWalkDate);
-                        administration.Add(dog);
-                        break;
+                        try
+                        {
+                            Dog dog = new Dog(chipRegistrationNumber,dateOfBirth,name,lastWalkDate);
+                            administration.Add(dog);
+                            break;
+                        }
+                        catch(Exception x)
+                        {
+                            if (x is ArgumentNullException || x is ArgumentException)
+                            MessageBox.Show("unable to create dog");
+                            break;
+                        }
                     case "Cat":
                     case "cat":
-                        Cat cat = new Cat(chipRegistrationNumber,dateOfBirth,name,cbBadHabits.Text);
-                        administration.Add(cat);
-                        break;
+                        try
+                        {
+                            Cat cat = new Cat(chipRegistrationNumber,dateOfBirth,name,cbBadHabits.Text);
+                            administration.Add(cat);
+                            break;
+                        }
+                        catch(Exception x)
+                        {
+                            if(x is ArgumentNullException || x is ArgumentException)
+                            MessageBox.Show("unable to create dog");
+                            break;
+                        }
+                        
                 }
                 refreshListBoxes();
             
@@ -288,7 +299,7 @@ namespace AnimalShelter
             }
         }
         
-        public void MakeRandomAnimals()
+        private void MakeRandomAnimals()
         {
             string[] namenHond = { "Bello", "Toby", "Kevin", "Laika" };
             string[] namenKat = { "Poes", "Thor", "KittyCat" };
