@@ -90,7 +90,7 @@ namespace AnimalShelter
             }
             bool reserved = ckBoxReservering.Checked;
             changedAnimal.IsReserved = reserved;
-            administrationForm.administration.Change(changedAnimal);
+            administrationform.administration.Change(changedAnimal);
             administrationform.refreshListBoxes();
             this.Close();
         }

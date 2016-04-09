@@ -361,9 +361,29 @@ namespace UnitTestProject1
             MakeCat();
             TestAdministration.Add(Testcat);
             //assert
-            Animal expectedresult = null;
+            Animal expectedResult = null;
             Animal accualResult = TestAdministration.FindAnimal(456);
-            Assert.AreEqual(expectedresult, accualResult);
+            Assert.AreEqual(expectedResult, accualResult);
+        }
+        [TestMethod]
+        public void Test_AdministrationChangeAnimal()
+        {
+            MakeDog();
+            TestAdministration.Add(Testdog);
+            TestAdministration.Change(Testdog = new Dog(123, new SimpleDate(2, 5, 2015), "ANewDog", new SimpleDate(2, 6, 2015)));
+            //assert
+            Animal expectedResult = Testdog;
+            Animal accualResult = TestAdministration.FindAnimal(123);
+            Assert.AreEqual(expectedResult, accualResult);
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Test_AdministrationChangeAnimalNULL()
+        {
+            MakeDog();
+            TestAdministration.Add(Testdog);
+            Testdog = null;
+            TestAdministration.Change(Testdog);
         }
     }
 }
