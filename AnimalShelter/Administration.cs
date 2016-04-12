@@ -81,6 +81,11 @@ namespace AnimalShelter
             }
         }
 
+        public void SortListBox()
+        {
+            animals.Sort();
+        }
+
         /// <summary>
         /// Saves all animals to a file with the given file name using serialisation.
         /// </summary>

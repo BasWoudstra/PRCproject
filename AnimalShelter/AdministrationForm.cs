@@ -10,14 +10,12 @@ using System.IO;
 
 namespace AnimalShelter
 {
-    public partial class AdministrationForm : Form 
+    public partial class AdministrationForm : Form
     {
         /// <summary>
         /// The (only) animal in this administration (for now....)
         /// </summary>
         public Administration administration;
-
-        List<Animal> sortedAnimals = new List<Animal>();
 
         /// <summary>
         /// Creates the form for doing adminstrative tasks
@@ -250,27 +248,14 @@ namespace AnimalShelter
             }
         }
 
-        public void orderListBoxes()
-        {
-            sortedAnimals.Clear();
-            //Ascending
-            List<Animal> SortedList = administration.animals.OrderBy(o => o.ChipRegistrationNumber).ToList();
-            //Descending
-            //List<Animal> SortedList = administration.animals.OrderByDescending(o => o.ChipRegistrationNumber).ToList();
-
-            foreach (Animal diertje in SortedList)
-            {
-                sortedAnimals.Add(diertje);
-            }
-        }
-
         public void refreshListBoxes()
         {
-            orderListBoxes();
+            //orderListBoxes();
+            administration.SortListBox();
             string[] values = new string[5];
             lbNotReserved.Items.Clear();
             lbReserved.Items.Clear();
-            foreach (Animal animal in sortedAnimals)
+            foreach (Animal animal in administration.animals)
             {
                 string diertje = animal.ToString();
                 values = diertje.Split(',');

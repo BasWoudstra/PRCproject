@@ -9,7 +9,7 @@ namespace AnimalShelter
     /// Class representing an animal in the shelter.
     /// </summary>
     [Serializable]
-    public abstract class Animal : ISellable
+    public abstract class Animal : ISellable, IComparable<Animal>
     {
         /// <summary>
         /// The chipnumber of the animal. Must be unique. Must be zero or greater than zero.
@@ -62,6 +62,11 @@ namespace AnimalShelter
 
         public abstract string MakeNoise();
 
+        public int CompareTo(Animal otherAnimal)
+        {
+            return ChipRegistrationNumber.CompareTo(otherAnimal.ChipRegistrationNumber);
+        }
+
         /// <summary>
         /// Retrieve information about this animal
         /// 
@@ -73,6 +78,7 @@ namespace AnimalShelter
         ///          "<ChipRegistrationNumber>, <DateOfBirth>, <Name>, <IsReserved>"
         ///          Where: IsReserved will be "reserved" if reserved or "not reserved" otherwise. 
         /// </returns>
+       
         public override string ToString()
         {
             string IsReservedString;
