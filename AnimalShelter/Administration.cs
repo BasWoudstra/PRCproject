@@ -74,7 +74,7 @@ namespace AnimalShelter
                 RemoveAnimal(animal.ChipRegistrationNumber);
                 Add(animal);
             }
-            catch 
+            catch
             {
                 throw new ArgumentNullException();
                 // throw new exeption. want als catch(Exception ex){throw ex;} dan geeft hij een verkeerde exeption terug.
