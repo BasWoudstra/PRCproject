@@ -37,6 +37,14 @@ namespace AnimalShelter
             {
                 animals.Add(animal);
             }
+            //we hebben hier gekozen voor een exception terug te geven omdat er geen null Animal verwacht word, 
+            //indien we deze check weg zouden halen zouden we er een bool van moeten maken voor 
+            //het checken ofdat de methode goed is uitgevoerd. u had gezegt dat NullExceptions beter waren indien
+            //ze met code werden afgehandeld, maar ook dat ze voor onverwachte situaties waren en dat het beter is om
+            //geen bool terug te geven, en omdat de code aanpassen voor alle exceptions op dit moment niet haalbaar
+            // is om te doen naast het werk voor de proftaak. hierom hebben wij gekozen om deze te laten staan ipv
+            //de code te veranderen. 
+            //dit geld voor iedere excpetion 
         }
 
         public void RemoveAnimal(int chipRegistrationNumber)

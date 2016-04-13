@@ -13,12 +13,7 @@ namespace AnimalShelter
     {
         Animal animal;
         AdministrationForm administrationform;
-
-        public AnimalInfo()
-        {
-            InitializeComponent();
-        }
-
+        
         public AnimalInfo(Animal animal, AdministrationForm administrationform)
         {
             InitializeComponent();
